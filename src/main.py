@@ -8,3 +8,9 @@ __auther__ = 'Daniel Elisabethsønn Antonsen'
 import numpy as np
 from matplotlib import pyplot as plt
 
+
+
+
+
+
+
