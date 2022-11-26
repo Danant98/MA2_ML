@@ -13,7 +13,7 @@ from MDS import Multidimensional_scaling
 # Opening data containing the B-matrix
 data_inner_sweden = np.loadtxt(os.path.join("resources", "city-inner-sweden.csv"))
 
-
+coordinates = Multidimensional_scaling(data_inner_sweden).run()
 
 
 

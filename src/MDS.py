@@ -10,12 +10,14 @@ import matplotlib.pyplot as plt
 
 class Multidimensional_scaling:
 
-    def __init__(self, B:np.ndarray):
+    def __init__(self, B:np.ndarray, labels:np.ndarray):
         """
         Args:
             B: np.ndarray, the distance matrix
+            labels: np.ndarray, the labels for each city
         """
-        self.__B = B 
+        self.__B = B
+        self.__labels = labels
     
     def __eigenvectors(self):
         """
@@ -28,29 +30,29 @@ class Multidimensional_scaling:
         # Computing eigenvalues and eigenvectors
         eigenvalues, eigenvectors = np.linalg.eig(self.__B)
         # Sort arrays in descending order
-        index = eigenvalues.argsort()[::-1]
-        eigenvalues = eigenvalues[index]
-        eigenvectors = eigenvectors[:, index]
 
         return eigenvalues, eigenvectors
     
-    def __coordinates(self, eigenvectors:np.ndarray, eigenvalues:np.ndarray):
+    def __coordinates(self, eigenvectors:np.ndarray, eigenvalues:np.ndarray, dim):
         """
         Method for computing the new coordinates for the points
         
         Args: 
             eigenvalues: np.ndarray, array containing the eigenvalues for matrix B
             eigenvectors: np.ndarray, array containing the corresponding eigenvectors for matrix B
+        Output:
+            np.ndarray, array containing the new coordinates
         """
-        return np.sqrt(eigenvalues) * eigenvectors 
+        return np.sqrt(eigenvalues[:dim]) * eigenvectors[:, :dim] 
 
 
-    def _plot(self, coordinates:np.ndarray):
+    def _plot(self, coordinates:np.ndarray, labels:np.ndarray):
         """
         Method for plotting the points
         
         Args:
             coordinates: np.ndarray, array containing the new points
+            labels: np.ndarray, array containing the labels for for each cities
         """
         plt.scatter(coordinates[:, 0], coordinates[:, 1], label=r"New coordinates")
         plt.show()
@@ -60,8 +62,7 @@ class Multidimensional_scaling:
         Method for running the MDS algorithm
         """
         __eigenvalues , __eigenvectors = self.__eigenvectors()
-        __coordinates = self.__coordinates(__eigenvectors, __eigenvalues)
-        self._plot(__coordinates)
-
+        __coordinates = self.__coordinates(__eigenvectors, __eigenvalues, 2)
+        self._plot(__coordinates, self.__labels)
 
 
