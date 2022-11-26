@@ -29,17 +29,16 @@ class Multidimensional_scaling:
         """
         # Computing eigenvalues and eigenvectors
         eigenvalues, eigenvectors = np.linalg.eig(self.__B)
-        # Sort arrays in descending order
-
         return eigenvalues, eigenvectors
     
-    def __coordinates(self, eigenvectors:np.ndarray, eigenvalues:np.ndarray, dim):
+    def __coordinates(self, eigenvectors:np.ndarray, eigenvalues:np.ndarray, dim:int):
         """
         Method for computing the new coordinates for the points
         
         Args: 
             eigenvalues: np.ndarray, array containing the eigenvalues for matrix B
             eigenvectors: np.ndarray, array containing the corresponding eigenvectors for matrix B
+            dim: int, spesifying the dimensions
         Output:
             np.ndarray, array containing the new coordinates
         """
@@ -54,7 +53,9 @@ class Multidimensional_scaling:
             coordinates: np.ndarray, array containing the new points
             labels: np.ndarray, array containing the labels for for each cities
         """
-        plt.scatter(coordinates[:, 0], coordinates[:, 1], label=r"New coordinates")
+        plt.scatter(coordinates[:, 1], coordinates[:, 0])
+        for i, txt in enumerate(labels):
+            plt.annotate(txt, (coordinates[i, 1] + 3, coordinates[i, 0] + 3))
         plt.show()
 
     def run(self):
@@ -64,5 +65,6 @@ class Multidimensional_scaling:
         __eigenvalues , __eigenvectors = self.__eigenvectors()
         __coordinates = self.__coordinates(__eigenvectors, __eigenvalues, 2)
         self._plot(__coordinates, self.__labels)
+        return __coordinates
 
 
