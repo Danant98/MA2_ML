@@ -2,12 +2,12 @@
 Main file for the course FYS-2021 Machine Learning, UiT The Arctic University.
 """
 
-__auther__ = 'Daniel Elisabethsønn Antonsen' 
+__author__ = 'Daniel Elisabethsønn Antonsen' 
 
 # Importing modules and libraries
 import numpy as np
-from matplotlib import pyplot as plt
 import os 
+from MDS import Multidimensional_scaling
 
 ## Problem 1
 # Opening data containing the B-matrix
