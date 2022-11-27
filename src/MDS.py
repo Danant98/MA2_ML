@@ -65,6 +65,5 @@ class Multidimensional_scaling:
         __eigenvalues , __eigenvectors = self.__eigenvectors()
         __coordinates = self.__coordinates(__eigenvectors, __eigenvalues, 2)
         self._plot(__coordinates, self.__labels)
-        return __coordinates
 
 
