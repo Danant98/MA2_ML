@@ -54,7 +54,7 @@ class Multidimensional_scaling:
             labels: np.ndarray, array containing the labels for for each cities
         """
         plt.scatter(coordinates[:, 1], coordinates[:, 0])
-        for i, txt in enumerate(labels):
+        for i, txt in enumerate(labels[:, 0]):
             plt.annotate(txt, (coordinates[i, 1] + 3, coordinates[i, 0] + 3))
         plt.show()
 
