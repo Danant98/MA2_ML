@@ -19,7 +19,7 @@ names_inner_sweden = pd.read_csv(os.path.join("resources", "city-names-sweden.cs
 faces_data = np.loadtxt(os.path.join("resources", "frey-faces.csv"))
 
 # Running multidimensional scaling algorithm
-# Multidimensional_scaling(data_inner_sweden, names_inner_sweden).run()
+Multidimensional_scaling(data_inner_sweden, names_inner_sweden).run()
 
 # Running k-mean clustering algorithm for k = 2
 mean_2 = k_mean(faces_data, 2)
