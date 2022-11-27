@@ -45,6 +45,11 @@ class k_mean:
     def run(self):
         """
         Method for running the algorithm
+
+        Output:
+            centroids: np.ndarray, array containing the centroids
+            labels: np.ndarray, array containing the labels for each point
+            Sorted array containg the distances from min to max
         """
         while True:
             self._comp_distance()
