@@ -68,8 +68,8 @@ class k_mean:
             img: np.ndarray, array containing the images to be plotted
             centroids: np.ndarray, array containing the centroids
         """
-        fig, ax = plt.subplots(self._k, imgs.shape[1], figsize=(12, 12), tight_layout=True \
-                  , subplot_kw={'xticks': [], 'yticks': []}, sharex=True, sharey=True)
+        fig, ax = plt.subplots(self._k, imgs.shape[1], figsize=(12, 12), tight_layout=True, \
+                               subplot_kw={'xticks': [], 'yticks': []}, sharex=True, sharey=True)
         for j in range(self._k):
             im_centroid = centroids[j].reshape(28, 20)
             ax[j, 0].imshow(im_centroid, cmap='gray')
