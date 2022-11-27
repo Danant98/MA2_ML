@@ -56,7 +56,7 @@ class k_mean:
             self._assign()
             self._update_centroids()
             old_distance = self._distance
-            if np.all(np.linalg.norm(self._distance - old_distance)) < 1E-5:
+            if np.all(np.linalg.norm(self._distance - old_distance)< 1E-5):
                 break
         return self._labels, self._centroids, np.argsort(self._labels)
 
