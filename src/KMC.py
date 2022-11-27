@@ -53,13 +53,25 @@ class k_mean:
             old_distance = self._distance
             if np.all(np.linalg.norm(self._distance - old_distance)) < 1E-5:
                 break
-        return self._labels, self._centroids
+        return self._labels, self._centroids, np.argsort(self._labels)
 
-    def _plot(self):
+    def plot(self, imgs:np.ndarray, centroids:np.ndarray):
         """
         Method for plotting the clusters
+        
+        Args:
+            img: np.ndarray, array containing the images to be plotted
+            centroids: np.ndarray, array containing the centroids
         """
-        plt.figure(figsize=(10, 8))
+        fig, ax = plt.subplots(self._k, imgs.shape[1], figsize=(12, 12), tight_layout=True \
+                  , subplot_kw={'xticks': [], 'yticks': []}, sharex=True, sharey=True)
+        for j in range(self._k):
+            im_centroid = centroids[j].reshape(28, 20)
+            ax[j, 0].imshow(im_centroid, cmap='gray')
+            for i in range(1, imgs.shape[1]):
+                im = imgs[j, i].reshape(28, 20)
+                ax[j, i].imshow(im, cmap='gray')
+        fig.suptitle(f"K-means clustering with k = {str(self._k)}")
 
 
 
