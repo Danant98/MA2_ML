@@ -15,9 +15,10 @@ import pandas as pd
 data_inner_sweden = np.loadtxt(os.path.join("resources", "city-inner-sweden.csv"))
 names_inner_sweden = pd.read_csv(os.path.join("resources", "city-names-sweden.csv"), header=None).to_numpy()
 
-
-
+# Running multidimensional scaling algorithm
 Multidimensional_scaling(data_inner_sweden, names_inner_sweden).run()
+
+# https://vemaps.com/sweden/se-02 source for picture of sweden
 
 
 
